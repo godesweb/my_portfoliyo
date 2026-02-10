@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-premium-dark: #0a0a0a;
+  --color-accent: #6366f1;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Orbit Fix */
+.orbit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.orbit-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border: 1px dashed rgba(99, 102, 241, 0.2);
+  border-radius: 50%;
+}
+
+.orbit-icon-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: orbit-rotate 20s linear infinite;
+}
+
+@keyframes orbit-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.icon-box {
+  position: absolute;
+  top: -25px; /* Adjust to sit on the ring */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Counter-rotate the icon so it stays upright */
+  animation: counter-rotate 20s linear infinite;
+}
+
+@keyframes counter-rotate {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(-360deg); }
+}
+
+.dark { background-color: #0a0a0a; color: white; }
